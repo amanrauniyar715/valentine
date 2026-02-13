@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For My Love 💕</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9ecb,#ffd6ec);
+    font-family:cursive;
+    overflow:hidden;
+}
+
+.box{
+    text-align:center;
+    color:white;
+    animation:fade 2s ease;
+}
+
+h1{
+    font-size:40px;
+}
+
+button{
+    margin-top:25px;
+    padding:14px 35px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4d88;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+@keyframes fade{
+    from{opacity:0}
+    to{opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>Hey Beautiful 💖</h1>
+    <p>I made something special for you...</p>
+    <button onclick="start()">Open 💌</button>
+</div>
+
+<script>
+function start(){
+    window.location.href="love.html";
+}
+</script>
+
+</body>
+</html>

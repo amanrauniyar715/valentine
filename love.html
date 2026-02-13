@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Be My Valentine 💘</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff8fb1,#ffe0f3);
+    font-family:cursive;
+    overflow:hidden;
+}
+
+/* glass card */
+.card{
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.35);
+    padding:30px;
+    border-radius:30px;
+    text-align:center;
+    width:350px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.25);
+}
+
+h2{
+    color:#ff2e75;
+    margin:5px 0;
+}
+
+/* typing text */
+#typing{
+    min-height:55px;
+    font-size:18px;
+}
+
+/* slideshow */
+img{
+    width:220px;
+    border-radius:20px;
+    margin:10px 0;
+}
+
+/* reasons text */
+#reasons{
+    font-size:16px;
+    margin:8px 0;
+    color:#d63384;
+    font-weight:bold;
+}
+
+/* slider */
+input[type=range]{
+    width:80%;
+}
+
+/* buttons */
+button{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    margin:8px;
+}
+
+.yes{background:#ff2e75;color:white;}
+.no{background:#999;color:white;position:absolute;}
+
+.yes:hover{transform:scale(1.1)}
+
+/* floating hearts */
+.heart{
+    position:absolute;
+    font-size:20px;
+    animation:float 5s linear infinite;
+}
+@keyframes float{
+    from{transform:translateY(100vh)}
+    to{transform:translateY(-10vh)}
+}
+
+/* countdown */
+#countdown{
+    font-size:14px;
+    margin-top:5px;
+    color:#ff4d88;
+}
+</style>
+</head>
+
+<body>
+
+<!-- music -->
+<audio autoplay loop>
+  <source src="Ham-Tere-Pyaar-Main.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+
+<h2 id="typing"></h2>
+
+<img id="slide" src="https://i.imgur.com/7k12EPD.png">
+
+<div id="reasons"></div>
+
+<p>How much do you love me? 😚</p>
+<input type="range" min="0" max="100" value="100" id="loveSlider">
+
+<div id="countdown"></div>
+
+<br>
+
+<button class="yes" onclick="yes()">YES 💖</button>
+<button class="no" id="noBtn">NO 😜</button>
+
+</div>
+
+<script>
+/* ❤️ typing love letter */
+const text="Hey my love 💕\nYou make my world brighter every day ✨\nWill you be my Valentine forever?";
+let i=0;
+function type(){
+ if(i<text.length){
+  document.getElementById("typing").innerHTML+=text[i];
+  i++;
+  setTimeout(type,40);
+ }
+}
+type();
+
+/* ❤️ slideshow (replace with her photos) */
+const photos=[
+ "photo1.jpeg",
+ "photo2.jpeg",
+ "photo3.jpeg"
+];
+let p=0;
+setInterval(()=>{
+ p=(p+1)%photos.length;
+ document.getElementById("slide").src=photos[p];
+},2000);
+
+/* ❤️ reasons rotation */
+const reasons=[
+ "Because your smile melts my heart 💖",
+ "Because you understand me 🥰",
+ "Because life is better with you ✨",
+ "Because you are my everything ❤️",
+ "Because I can't imagine life without you 💕"
+];
+
+let r=0;
+setInterval(()=>{
+ document.getElementById("reasons").innerText=reasons[r];
+ r=(r+1)%reasons.length;
+},1500);
+
+/* ❤️ love slider */
+const slider=document.getElementById("loveSlider");
+slider.oninput=function(){
+ if(this.value<90) this.value=90;  // she can't lower it 😆
+};
+
+/* ❤️ countdown to Feb 14 */
+function updateCountdown(){
+ const now=new Date();
+ const val=new Date(now.getFullYear(),1,14);
+ if(now>val) val.setFullYear(now.getFullYear()+1);
+
+ const diff=val-now;
+
+ const d=Math.floor(diff/1000/60/60/24);
+ const h=Math.floor(diff/1000/60/60)%24;
+
+ document.getElementById("countdown").innerText=
+ "Valentine in "+d+" days "+h+" hours 💕";
+}
+setInterval(updateCountdown,1000);
+
+/* ❤️ yes */
+function yes(){
+ window.location.href="yes.html";
+}
+
+/* ❤️ no button fun */
+const noBtn=document.getElementById("noBtn");
+let scale=1;
+noBtn.addEventListener("mouseover",()=>{
+ noBtn.style.top=Math.random()*80+"vh";
+ noBtn.style.left=Math.random()*80+"vw";
+ scale-=0.1;
+ noBtn.style.transform="scale("+scale+")";
+});
+
+/* ❤️ floating hearts */
+setInterval(()=>{
+ const h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="💖";
+ h.style.left=Math.random()*100+"vw";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),5000);
+},250);
+
+/* ❤️ sparkle cursor */
+document.addEventListener("mousemove",e=>{
+ const s=document.createElement("div");
+ s.innerHTML="✨";
+ s.style.position="absolute";
+ s.style.left=e.pageX+"px";
+ s.style.top=e.pageY+"px";
+ document.body.appendChild(s);
+ setTimeout(()=>s.remove(),400);
+});
+</script>
+
+</body>
+</html>

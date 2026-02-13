@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>She Said YES 💖</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff2e75,#ffb6d9);
+    font-family:cursive;
+    color:white;
+    text-align:center;
+    overflow:hidden;
+}
+
+/* main box */
+.box{
+    max-width:360px;
+    padding:25px;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.15);
+    border-radius:30px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+    animation:pop 1s ease;
+}
+
+@keyframes pop{
+    from{transform:scale(0)}
+    to{transform:scale(1)}
+}
+
+h1{
+    font-size:42px;
+    margin-bottom:5px;
+}
+
+h2{
+    margin-top:5px;
+}
+
+/* love letter */
+.letter{
+    font-size:15px;
+    margin:15px 0;
+    line-height:1.5;
+}
+
+/* memory photos */
+.memories{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin:12px 0;
+}
+
+.memories img{
+    width:80px;
+    height:80px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+/* button */
+button{
+    margin-top:12px;
+    padding:10px 22px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+/* falling hearts/confetti */
+.fall{
+    position:absolute;
+    font-size:22px;
+    animation:drop 4s linear infinite;
+}
+
+@keyframes drop{
+    from{transform:translateY(-10vh)}
+    to{transform:translateY(110vh)}
+}
+</style>
+</head>
+
+<body>
+
+<!-- romantic music -->
+<audio autoplay loop>
+  <source src="Ham-Tere-Pyaar-Main.mp3" type="audio/mpeg">
+</audio>
+
+<div class="box">
+
+<h1>YAYYY!!! 💕</h1>
+<h2>You Said YES 🥰</h2>
+
+<!-- cute gif -->
+<img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="180" style="border-radius:20px;">
+
+<div class="letter">
+Thank you for choosing me ❤️ <br>
+You are my happiness, my peace, my best friend, and my forever. <br>
+Every day with you feels magical ✨ <br>
+I promise to love you, protect you, and annoy you forever 😜💕
+And i am so glad that you chose me baby. i love you the most and i am really proud of you my love.
+i can wait to spend my whole life with you.
+you the strongest girl i have ever seen in my life babyy.
+i wil be always there for you babay in your lows and ups.
+i love you somuchhhhhhhhhhhhhhhhhhhhhhhhh.
+</div>
+
+<!-- names (edit here) -->
+<h3>Aman ❤️ Rista</h3>
+
+<!-- memory photos (replace with your photos) -->
+<div class="memories">
+<img src="photo1.jpeg">
+<img src="photo2.jpeg">
+<img src="photo4.jpeg">
+</div>
+
+<p>Forever started the day i met you 💍💖</p>
+
+<button onclick="window.location.href='index.html'">Back to Start</button>
+
+</div>
+
+<script>
+/* falling hearts + confetti */
+const items=["💖","💕","💘","🎉","✨"];
+
+setInterval(()=>{
+ const el=document.createElement("div");
+ el.className="fall";
+ el.innerHTML=items[Math.floor(Math.random()*items.length)];
+ el.style.left=Math.random()*100+"vw";
+ document.body.appendChild(el);
+
+ setTimeout(()=>el.remove(),4000);
+},150);
+</script>
+
+</body>
+</html>
